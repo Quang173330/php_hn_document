@@ -11,8 +11,10 @@
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
-                                <form action="" class="header_search_form clearfix">
-                                    <input type="search" required="required" class="header_search_input"
+                                <form action="{{ route('documents.search') }}" method="POST"
+                                    class="header_search_form clearfix">
+                                    @csrf
+                                    <input type="search" name="name" required="required" class="header_search_input"
                                         placeholder="@lang('home.search')">
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
@@ -68,7 +70,7 @@
                         <div class="top_bar_content ml-auto">
                             <div class="wishlist_content">
                                 <div class="wishlist_text">
-                                    <a href="">
+                                    <a href="{{ route('user.documents.storeUpload') }}">
                                         <i class="fas fa-upload"></i>@lang('home.upload')
                                     </a>
                                 </div>
@@ -105,7 +107,8 @@
                                                         href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">@lang('home.edit_profile')</a>
                                                 </li>
                                                 <li>
-                                                    <a href="">@lang('home.list_documents')</a>
+                                                    <a
+                                                        href="{{ route('user.documents.index') }}">@lang('home.list_documents')</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -116,7 +119,8 @@
                                 <div class="wishlist_content">
                                     <form action="{{ route('logout') }}" method="post">
                                         @csrf
-                                        <input id="logout-input" class="btn mt-10" type="submit" value=@lang('home.logout')>
+                                        <input id="logout-input" class="btn mt-10" type="submit"
+                                            value=@lang('home.logout')>
                                     </form>
                                 </div>
                             </div>

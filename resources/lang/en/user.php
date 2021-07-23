@@ -14,4 +14,11 @@ return [
     'follow_button' => 'Follow',
     'unfollow_button' => 'Unfollow',
     'message_button' => 'Message',
+    'list_docs' => 'List Documents',
+    'download' => 'Download',
+    'unsave' => 'Un Save',
+    'own_docs' => 'Own Documents',
+    'favorite_docs' => 'Favorite Documents',
+    'delete' => 'Delete',
+    'save' => 'Save',
 ];

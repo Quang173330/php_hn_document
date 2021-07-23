@@ -18,7 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $guard = ['role_id'];
+    protected $guarded = ['role_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -83,5 +83,10 @@ class User extends Authenticatable
     public function receipts()
     {
         return $this->hasMany(Receipt::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 }

@@ -14,4 +14,11 @@ return [
     'follow_button' => 'Theo dõi',
     'unfollow_button' => 'Bỏ theo dõi',
     'message_button' => 'Nhắn tin',
+    'list_docs' => 'Danh sách tài liệu',
+    'download' => 'Tải về',
+    'unsave' => 'Bở lưu',
+    'own_docs' => 'Tài liệu của bạn',
+    'favorite_docs' => 'Tài liệu yêu thích',
+    'delete' => 'Xóa đi',
+    'save' => 'Lưu',
 ];

@@ -25,8 +25,12 @@ Route::group(['middleware' => 'localization'], function () {
     Route::resource('documents', 'DocumentController', [
         'as' => 'user',
     ]);
-    Route::get('upload', 'DocumentController@upload')->name('user.documents.upload');
+    Route::get('upload', 'DocumentController@upload')
+    ->name('user.documents.upload')->middleware('auth');
     Route::post('upload', 'DocumentController@storeUpload')->name('user.documents.storeUpload');
+    Route::post('search', 'DocumentController@search')->name('documents.search');
+    Route::post('mark/{id}', 'DocumentController@mark')->name('documents.mark');
+    Route::post('unmark/{id}', 'DocumentController@unmark')->name('documents.unmark');
 });
 
-Route::get('change-language/{locale}', 'LocalizationController@changeLanguage')->name('change-language');
+Route::get('change-language/{locale}', 'HomeController@changeLanguage')->name('change-language');

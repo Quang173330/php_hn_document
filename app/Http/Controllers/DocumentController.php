@@ -19,7 +19,10 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        $documents = Auth::user()->documents;
+        $favoriteDocuments = Auth::user()->favorites;
+
+        return view('user.documents.list-document', compact('documents', 'favoriteDocuments'));
     }
 
     /**
@@ -85,7 +88,10 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $document = Document::findOrFail($id);
+        $document->delete();
+
+        return redirect()->route('user.documents.index');
     }
 
     public function upload()
@@ -121,9 +127,34 @@ class DocumentController extends Controller
     }
 
     public function genPdfThumbnail($file, $target)
-    {
+    {   
         $imgExt = new Imagick();
         $imgExt->readImage($file . "[0]");
         $imgExt->writeImages($target, true);
+    }
+
+    public function search(Request $request)
+    {
+        $documents = Document::where('name', 'LIKE', '%' . $request->name . '%')->get();
+
+        return view('user.documents.search', compact('documents'));
+    }
+
+    public function mark($id)
+    {
+        $document = Document::findOrFail($id);
+        $userLogin = Auth::user();
+        $userLogin->favorites()->attach($document);
+
+        return redirect()->route('user.documents.index');
+    }
+
+    public function unmark($id)
+    {
+        $document = Document::findOrFail($id);
+        $userLogin = Auth::user();
+        $userLogin->favorites()->detach($document);
+
+        return redirect()->route('user.documents.index');
     }
 }
