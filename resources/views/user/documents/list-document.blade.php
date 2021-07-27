@@ -58,14 +58,24 @@
                                     <div class="m-widget4__item d-flex justify-content-around">
                                         <div class="m-widget4__info">
                                             <span class="m-widget4__title">
-                                                <a
+                                                <a class="text-dark"
                                                     href="{{ route('user.documents.show', ['document' => $document->id]) }}">
                                                     {{ $document->name }}
                                                 </a>
                                             </span>
                                             <br>
-                                            <span class="m-widget4__sub">
-                                                {{ Auth::user()->name }}
+                                            <a class="text-dark"
+                                                href="{{ route('users.show', ['user' => $document->uploadBy->id]) }}">
+                                                {{ $document->uploadBy->name }}
+                                            </a>
+                                            <br>
+                                            <br>
+                                            <span>
+                                                @lang('user.category')
+                                                <a
+                                                    href="{{ route('user.category_documents', ['id' => $document->category->id]) }}">
+                                                    {{ $document->category->name }}
+                                                </a>
                                             </span>
                                         </div>
                                         <div class="m-widget4__ext d-flex">
@@ -95,14 +105,24 @@
                                     <div class="m-widget4__item d-flex justify-content-around">
                                         <div class="m-widget4__info">
                                             <span class="m-widget4__title">
-                                                <a
+                                                <a class="text-dark"
                                                     href="{{ route('user.documents.show', ['document' => $document->id]) }}">
                                                     {{ $document->name }}
                                                 </a>
                                             </span>
                                             <br>
-                                            <span class="m-widget4__sub">
-                                                {{ Auth::user()->name }}
+                                            <a class="text-dark"
+                                                href="{{ route('users.show', ['user' => $document->uploadBy->id]) }}">
+                                                {{ $document->uploadBy->name }}
+                                            </a>
+                                            <br>
+                                            <br>
+                                            <span>
+                                                @lang('user.category')
+                                                <a
+                                                    href="{{ route('user.category_documents', ['id' => $document->category->id]) }}">
+                                                    {{ $document->category->name }}
+                                                </a>
                                             </span>
                                         </div>
                                         <div class="m-widget4__ext d-flex">
@@ -116,7 +136,7 @@
                                             <form method="POST"
                                                 action="{{ route('documents.unmark', ['id' => $document->id]) }}">
                                                 @csrf
-                                                <button type="submit" class=" btn btn-sm btn-info">
+                                                <button type="submit" class=" btn btn-sm btn-warning">
                                                     @lang('user.unsave')<i class="far fa-bookmark"></i>
                                                 </button>
                                             </form>

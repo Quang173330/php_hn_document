@@ -11,7 +11,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb lighten-4">
                             <li class="breadcrumb-item">
-                                <a class="text-black-50" href="">@lang('user.buy-coin')</a>
+                                <a class="text-black-50" href="">@lang('user.view-document')</a>
                                 <i class="fas fa-angle-double-right mx-2" aria-hidden="true"></i>
                             </li>
                         </ol>
@@ -28,6 +28,12 @@
                     @lang('user.uploaded_by')
                     <a href="{{ route('users.show', ['user' => $author->id]) }}">{{ $author->name }}</a>
                     @lang('user.on') {{ $document->created_at->format('M-d-Y') }}
+                </div>
+                <div class="mb-4">
+                    @lang('user.category')
+                    <a href="{{ route('user.category_documents', ['id' => $document->category->id]) }}">
+                        {{ $document->category->name }}
+                    </a>
                 </div>
                 <div class="mb-4 d-flex">
                     <div>

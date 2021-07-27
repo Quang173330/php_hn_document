@@ -7,7 +7,7 @@
                         <div class="logo"><a href="{{ route('home') }}">{{ config('web.logo') }}</a></div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                <div class="col-lg-4 col-12 order-lg-2 order-3 text-lg-left text-right">
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
@@ -16,22 +16,25 @@
                                     @csrf
                                     <input type="search" name="name" required="required" class="header_search_input"
                                         placeholder="@lang('home.search')">
-                                    <div class="custom_dropdown">
-                                        <div class="custom_dropdown_list">
-                                            <span
-                                                class="custom_dropdown_placeholder clc">@lang('home.categories')</span><i
-                                                class="fas fa-chevron-down"></i>
-                                            <ul class="custom_list clc">
-                                                <li><a class="clc" href="">@lang('home.categories')</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                     <button type="submit" class="header_search_button trans_300" value="Submit">
                                         <i class="text-white fas fa-search"></i>
                                     </button>
                                 </form>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-12 order-lg-2 order-3 text-lg-left text-right my-auto">
+                    <div class="top_bar_menu">
+                        <ul class="standard_dropdown top_bar_dropdown">
+                            <li>
+                                <a>
+                                    @lang('home.categories')
+                                    <i class="fas fa-chevron-down"></i>
+                                </a>
+                                @include('user.layouts.categories', ['categories' => $categories])
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
@@ -92,7 +95,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="top_bar_content ml-auto">
+                            <div class="top_bar_content mx-auto">
                                 <div class="wishlist_content">
                                     <ul class="standard_dropdown top_bar_dropdown">
                                         <li>
@@ -110,18 +113,16 @@
                                                     <a
                                                         href="{{ route('user.documents.index') }}">@lang('home.list_documents')</a>
                                                 </li>
+                                                <li>
+                                                    <form action="{{ route('logout') }}" method="post">
+                                                        @csrf
+                                                        <input id="logout-input" class="btn p-0 mt-3" type="submit"
+                                                            value=@lang('home.logout')>
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                            <div class="top_bar_content ml-auto">
-                                <div class="wishlist_content">
-                                    <form action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                        <input id="logout-input" class="btn mt-10" type="submit"
-                                            value=@lang('home.logout')>
-                                    </form>
                                 </div>
                             </div>
                         @endif

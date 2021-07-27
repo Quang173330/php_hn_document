@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $categories = Category::with('categories')
+            ->where('parent_id', '=', config('uploads.category_root'))
+            ->get();
+
+        return view('user.home', compact('categories'));
     }
 
     public function changeLanguage($locale)

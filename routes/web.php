@@ -48,6 +48,7 @@ Route::group(['middleware' => 'localization'], function () {
     ]);
     Route::post('admin/members/ban/{id}', 'MemberController@ban')->name('admin.members.ban');
     Route::post('admin/members/upgrade/{id}', 'MemberController@upgrade')->name('admin.members.upgrade');
+    Route::get('category/{id}/documents', 'DocumentController@listDocuments')->name('user.category_documents');
 });
 
 Route::get('change-language/{locale}', 'HomeController@changeLanguage')->name('change-language');

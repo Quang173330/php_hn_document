@@ -36,4 +36,6 @@ return [
     'comment_panel' => 'Bảng bình luận',
     'comment_input' => 'Nhập vào ý kiến của bạn',
     'post' => 'Đăng',
+    'view-document' => 'Xem tài liệu',
+    'category' => 'Category:'
 ];

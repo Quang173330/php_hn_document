@@ -36,4 +36,6 @@ return [
     'comment_panel' => 'Comment Panel',
     'comment_input' => 'Type your comment',
     'post' => 'Post',
+    'view-document' => 'View Document',
+    'category' => 'Category:'
 ];

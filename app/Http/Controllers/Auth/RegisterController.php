@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -38,7 +39,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    
+
     public function __construct()
     {
         $this->middleware('guest');
@@ -85,6 +86,10 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('register');
+        $categories = Category::with('categories')
+            ->where('parent_id', '=', config('uploads.category_root'))
+            ->get();
+
+        return view('register', compact('categories'));
     }
 }

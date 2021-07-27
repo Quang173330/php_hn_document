@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
+use App\Models\Category;
 
 class LoginController extends Controller
 {
@@ -44,7 +45,11 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('login');
+        $categories = Category::with('categories')
+            ->where('parent_id', '=', config('uploads.category_root'))
+            ->get();
+
+        return view('login', compact('categories'));
     }
 
     public function login(Request $request)

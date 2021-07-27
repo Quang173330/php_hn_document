@@ -8,9 +8,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Receipt;
+use App\Models\Category;
 
 class UserController extends Controller
 {
+    protected $categories;
+
+    public function __construct()
+    {
+        $this->categories = Category::with('categories')
+            ->where('parent_id', '=', config('uploads.category_root'))
+            ->get();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,13 +62,14 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $check = false;
         $follow = false;
+        $categories = $this->categories;
         if (Auth::check() && Auth::id() == $user->id) {
             $check = true;
         } elseif (Auth::user()->followings->contains($user)) {
             $follow = true;
         }
 
-        return view('user.profile', compact('user', 'check', 'follow'));
+        return view('user.profile', compact('user', 'check', 'follow', 'categories'));
     }
 
     /**
@@ -71,8 +81,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $categories = $this->categories;
         if ($this->authorize('update', $user)) {
-            return view('user.edit-profile', compact('user'));
+            return view('user.edit-profile', compact('user', 'categories'));
         }
     }
 
@@ -135,7 +146,9 @@ class UserController extends Controller
 
     public function buyCoin()
     {
-        return view('user.buy-coin');
+        $categories = $this->categories;
+
+        return view('user.buy-coin', compact('categories'));
     }
 
     public function payment(PaymentRequest $request)

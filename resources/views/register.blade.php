@@ -34,15 +34,15 @@
                 <div class="col-lg-6">
                     <div class="card2 card border-0 px-4 py-5">
                         <div class="row mb-4 px-3">
-                            <h6 class="mb-0 mr-4 mt-2">@lang('authen.signup')</h6>
+                            <h6 class="mb-0 mr-4 mt-2">@lang('authen.signin')</h6>
                             <div class="facebook text-center mr-3">
-                                <div class="fa fa-facebook"></div>
+                                <i class="fab fa-facebook-f"></i>
                             </div>
                             <div class="twitter text-center mr-3">
-                                <div class="fa fa-twitter"></div>
+                                <i class="fab fa-twitter"></i>
                             </div>
                             <div class="linkedin text-center mr-3">
-                                <div class="fa fa-linkedin"></div>
+                                <i class="fab fa-linkedin-in"></i>
                             </div>
                         </div>
                         <div class="row px-3 mb-4">
