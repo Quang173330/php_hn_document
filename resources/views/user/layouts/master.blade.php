@@ -11,6 +11,8 @@
 
     <meta name="google" content="@lang('home.content')" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}' rel='stylesheet'>
@@ -19,6 +21,7 @@
     <link href='{{ asset('bower_components/font-awesome-5/css/fontawesome.min.css') }}' rel='stylesheet'>
 
     <script type='text/javascript' src='{{ asset('bower_components/jquery/dist/jquery.min.js') }}'></script>
+    <script src="{{ asset('bower_components/pusher-js/dist/web/pusher.min.js') }}"></script>
 
     <script type='text/javascript' src='{{ asset('bower_components/font-awesome-5/js/fontawesome.min.js') }}'>
     </script>

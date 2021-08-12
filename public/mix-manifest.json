@@ -1,6 +1,7 @@
 {
     "/js/add_member.js": "/js/add_member.js",
     "/js/app.js": "/js/app.js",
+    "/js/chat.js": "/js/chat.js",
     "/js/delete_category.js": "/js/delete_category.js",
     "/js/member_ban_upgrade.js": "/js/member_ban_upgrade.js",
     "/js/upload.js": "/js/upload.js",
@@ -10,5 +11,6 @@
     "/css/user-profile.css": "/css/user-profile.css",
     "/css/list-docs.css": "/css/list-docs.css",
     "/css/upload.css": "/css/upload.css",
-    "/css/buy-coin.css": "/css/buy-coin.css"
+    "/css/buy-coin.css": "/css/buy-coin.css",
+    "/css/chat.css": "/css/chat.css"
 }

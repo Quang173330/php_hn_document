@@ -56,7 +56,7 @@
                                                 class="btn btn-primary">@lang('user.follow_button')</button>
                                         </form>
                                     @endif
-                                    <button class="btn btn-outline-primary">@lang('user.message_button')</button>
+                                    <a href="{{route('user.messages', ['id' => $user->id])}}" class="btn btn-outline-primary">@lang('user.message_button')</a>
                                 </div>
                             @endif
                         </div>

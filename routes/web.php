@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,11 @@ Route::group(['middleware' => 'localization'], function () {
     Route::post('admin/members/ban/{id}', 'MemberController@ban')->name('admin.members.ban');
     Route::post('admin/members/upgrade/{id}', 'MemberController@upgrade')->name('admin.members.upgrade');
     Route::get('category/{id}/documents', 'DocumentController@listDocuments')->name('user.category_documents');
+    Route::get('chat', 'MessageController@index')->name('user.chat');
+    Route::get('messages/{id}', 'MessageController@getMessages')->name('user.messages');
+    Route::get('conversation/{id}', 'MessageController@getConversation')->name('user.show.conversation');
+    Route::get('conversations', 'MessageController@getListConversation')->name('user.conversations');
+    Route::post('send', 'MessageController@sendMessage')->name('user.send');
 });
 
 Route::get('change-language/{locale}', 'HomeController@changeLanguage')->name('change-language');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageEvent;
 use Session;
 use App\Repositories\Category\CategoryRepositoryInterface;
 
